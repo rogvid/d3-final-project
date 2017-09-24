@@ -23,10 +23,10 @@
         }
         #map {
             /*min-height: 600px;*/
-            width: 600px;
-            height: 590px;
-/*            width: 860px;
-            height: 500px;*/
+/*            width: 800px;
+            height: 590px;*/
+            width: 860px;
+            height: 500px;
             float: left;
         }
 
@@ -44,13 +44,13 @@
         }
 
         #district_rank {
-/*            min-height: 600px;*/
+            /*min-height: 600px;*/
             float: left;
-/*            display: none;*/
+            display: none;
         }
 
         #avg_price_development {
-/*            display: none;*/
+            display: none;
         }
 
         .district {
@@ -139,6 +139,7 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="d3-scale-chromatic.v0.3.min.js"></script>
 <script>
+    "use strict";
     // The following lines are only used if #district_rank and #avg_price_development are not hidden
     var margin = {top: 20, right: 20, bottom: 150, left: 70},
         width = +d3.select("#district_rank svg").attr("width") - margin.left - margin.right,

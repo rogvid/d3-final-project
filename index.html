@@ -168,12 +168,9 @@
     // Add map and tiles from leaflet
     var map = L.map('map').setView([55.73, 12.47], 10);
 
-    // var url = 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png'
     var url = 'http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
     var attribution = "Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL."
 
-    // var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    //     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     var tiles = L.tileLayer(url, {
         attribution: attribution,
     }).addTo(map);
@@ -258,7 +255,6 @@
 
         data.features.sort(function(a, b){ return +a.properties.avg_sales['1992'] - +b.properties.avg_sales['1992'];});
 
-        debugger;
         var total_price = transpose(data.features.map(function(d) { return d3.zip(d3.keys(d.properties.total_sales), d3.values(d.properties.total_sales), d3.values(d.properties.n_sales_info)).map(function(d){ return +d[2] !== 0 ? +d[1]/+d[2] : +d[1]; });  })).map(avg);
         total_price = d3.zip(years, total_price).map(function(d){ return {year: d[0], value: d[1]};});
 
@@ -354,8 +350,6 @@
             .attr("class", "v axis")
             .call(d3.axisLeft(v).ticks(3).tickFormat(d3.format(",.0f")).tickSizeInner([-width]));
         
-        debugger;
-        
         lineplot.append("path").attr("class", "line").attr("d", line(total_price));
 
     });
@@ -383,8 +377,7 @@
     }
 
     var mouseover = function (d) {
-        debugger;
-        district = d3.select(this);
+        var district = d3.select(this);
         district.attr("stroke-width", 3)
             .attr("fill-opacity", 1.0)
             .attr("stroke-opacity", 1.0);
@@ -392,7 +385,7 @@
     }
 
     var mouseout = function (feature) {
-        district = d3.select(this);
+        var district = d3.select(this);
         district.attr("stroke-width", 2)
             .attr("fill-opacity", 0.7)
             .attr("stroke-opacity", 0.7);
@@ -403,8 +396,7 @@
         update(year)
         if (year >= 2017) {
             clearInterval(interval);
-            /* Add buttons to the visualization, to make interaction possible */
-                }
+        }
     }, 1000)
 
 </script>
